@@ -128,9 +128,9 @@
         <div class="rev-slider">
             @foreach ($review as $rev)
             <div>
-               
+
                 <div class="rev-box">
-                 
+
                     <div>
                         <img src="{{ $rev->image }}" alt="">
                     </div>
@@ -139,9 +139,9 @@
                         <h5>{{ $rev->name }}</h5>
                         <h6>{{ $rev->designation }}</h6>
                     </div>
-                 
+
                 </div>
-               
+
             </div>
             @endforeach
         </div>

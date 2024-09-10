@@ -7,8 +7,8 @@
 
     <!-- banner start -->
     <!-- banner start -->
-       <!-- banner start -->
-       <section class="main_slider">
+    <!-- banner start -->
+    <section class="main_slider">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($slider as $index => $sliders)
@@ -36,10 +36,18 @@
                                     </div>
                                 </div>
                                 <div class="socil-icon">
-                                    <i class="fa-brands fa-youtube wow slideInRight" data-wow-duration="1s"></i>
-                                    <i class="fa-brands fa-x-twitter wow slideInRight" data-wow-duration="2s"></i>
-                                    <i class="fa-brands fa-facebook-f wow slideInRight" data-wow-duration="3s"></i>
+                                    <a href="{{ getConfig('youtube') }}" target="_blank">
+                                        <i class="fa-brands fa-youtube wow slideInRight" data-wow-duration="1s" style="color: white;"></i>
+                                    </a>
+                                    <a href="{{ getConfig('twitter') }}" target="_blank">
+                                        <i class="fa-brands fa-x-twitter wow slideInRight" data-wow-duration="2s" style="color: white;"></i>
+                                    </a>
+                                    <a href="{{ getConfig('facebook') }}" target="_blank">
+                                        <i class="fa-brands fa-facebook-f wow slideInRight" data-wow-duration="3s" style="color: white;"></i>
+                                    </a>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -66,9 +74,9 @@
                 <div class="col-md-5">
                     <div class="about-text wow slideInRight" data-wow-duration="2s">
                         <h3>{!! $about->description !!}</p>
-                        <a href="{{ $about->link }}">
-                            <p>{{ $about->button_text }}</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
-                        </a>
+                            <a href="{{ $about->link }}">
+                                <p>{{ $about->button_text }}</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
+                            </a>
                     </div>
                 </div>
             </div>
@@ -85,8 +93,8 @@
             <div class="row" style="align-items: center;">
                 <div class="col-md-5">
                     <div class="why-text  wow slideInLeft" data-wow-duration="2s">
-                        <h2>{{$hire->title}}</h2>
-                        <p>{{$hire->short_description}} </p>
+                        <h2>{{ $hire->title }}</h2>
+                        <p>{{ $hire->short_description }} </p>
                         <a href="{{ $hire->link }}">
                             <p>{{ $hire->button_text }}</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
                         </a>
@@ -125,35 +133,43 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="event-slider">
-                        @foreach ($event as $eves )
-                        <div class="event-box wow slideInLeft" data-wow-duration="3s">
-                            <img src="{{ asset($eves->primary_image) }}">
-                            <div class="event-box-detail">
-                                <div class="event-box-detail-title">
-                                    <div class="event-box-detail-title-date">
-                                        <h5>{{ \Carbon\Carbon::parse($eves->date)->format('d M Y') }}</h5>
+                        @foreach ($event as $eves)
+                            @php
+                                // Parse the date and format it into components
+                                $date = \Carbon\Carbon::parse($eves->date);
+                                $day = $date->format('d');
+                                $month = $date->format('M');
+                                $year = $date->format('Y');
+                            @endphp
+                            <div class="event-box wow slideInLeft" data-wow-duration="3s">
+                                <img src="{{ asset($eves->primary_image) }}" alt="Event Image">
+                                <div class="event-box-detail">
+                                    <div class="event-box-detail-title">
+                                        <div class="event-box-detail-title-date">
+                                            <h4>{{ $day }}</h4>
+                                            <h5>{{ strtoupper($month) }}<br>{{ $year }}</h5>
+                                        </div>
+                                        <h4>{{ $eves->title }}</h4>
                                     </div>
-                                    <h4>{{ $eves->title }}</h4>
-                                </div>
-                                <p>{{$eves->description}}</p>
-                                <div class="event-box-link">
-                                    <a href="{{ $eves->button_link }}">
-                                        <p>{{ $eves->button_text }}</p><i class="fa-sharp fa-solid fa-paper-plane-top"></i>
-                                    </a>
-                                    <div class="event-box-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <p>4.5K</p>
+                                    <p>{{ $eves->description }}</p>
+                                    <div class="event-box-link">
+                                        <a href="{{ $eves->button_link }}">
+                                            <p>{{ ucwords($eves->button_text) }}</p><i
+                                                class="fa-sharp fa-solid fa-paper-plane-top"></i>
+                                        </a>
+                                        <div class="event-box-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <p>4.5K</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
                         @endforeach
+
                     </div>
                 </div>
 
@@ -171,7 +187,7 @@
                 <div class="col-md-7">
                     <div class="special-heading wow slideInLeft" data-wow-duration="3s">
                         <h2>{{ $offer->title }}</h2>
-                        <p>{{$offer->short_description}}
+                        <p>{{ $offer->short_description }}
                         </p>
                     </div>
                 </div>
@@ -188,8 +204,8 @@
                                 <a href="tel:{{ getConfig('primary_email') }}">{{ getConfig('primary_email') }}</a>
                             </div>
                         </div>
-                        <a href="{{ $offer->link }}" class="contact-box-a">
-                            <p>{{ $offer->button_text }}</p><i class="fa-sharp fa-solid fa-paper-plane-top"></i>
+                        <a href="{{route('contactUsPage') }}" class="contact-box-a">
+                            <p>Contact Now</p><i class="fa-sharp fa-solid fa-paper-plane-top"></i>
                         </a>
                     </div>
                 </div>
@@ -215,10 +231,11 @@
                     <div class="video-slider  wow slideInLeft" data-wow-duration="2s">
                         <div>
                             <div class="video-box">
-                                <img src="{{asset ('web-assets/images/video-img.png') }}">
+                                <img src="{{ asset('web-assets/images/video-img.png') }}">
                                 <div class="play-btn">
-                                    <a href="{{ $videos->video}}" data-fancybox="1">
-                                        <img src="{{ asset('web-assets/images/play.png') }}" alt="" class="btn-video">
+                                    <a href="{{ $videos->video }}" data-fancybox="1">
+                                        <img src="{{ asset('web-assets/images/play.png') }}" alt=""
+                                            class="btn-video">
                                         <p>Play Video</p>
                                     </a>
                                 </div>
@@ -226,10 +243,11 @@
                         </div>
                         <div>
                             <div class="video-box">
-                                <img src="{{asset ('web-assets/images/video-img.png') }}">
+                                <img src="{{ asset('web-assets/images/video-img.png') }}">
                                 <div class="play-btn">
-                                    <a href="{{ $videos->video_2}}" data-fancybox="1">
-                                        <img src="{{ asset('web-assets/images/play.png') }}" alt="" class="btn-video">
+                                    <a href="{{ $videos->video_2 }}" data-fancybox="1">
+                                        <img src="{{ asset('web-assets/images/play.png') }}" alt=""
+                                            class="btn-video">
                                         <p>Play Video</p>
                                     </a>
                                 </div>
@@ -246,29 +264,21 @@
 
     <section class="why-sec">
         <div class="why-new-img">
-            <img src="{{ asset($award_1->primary_image) }}"
-            class="mt-5 wow slideInRight"
-            data-wow-duration="1s"
-            style="max-width: 103px; max-height: 108px;">
-            <img src="{{ asset($award_2->primary_image) }}"
-            class="mt-5 wow slideInRight"
-            data-wow-duration="2s"
-            style="max-width: 103px; max-height: 108px;">
-            <img src="{{ asset($award_3->primary_image) }}"
-            class="mt-5 wow slideInRight"
-            data-wow-duration="3s"
-            style="max-width: 103px; max-height: 108px;">
-            <img src="{{ asset($award_4->primary_image) }}"
-            class="mt-5 wow slideInRight"
-            data-wow-duration="2s"
-            style="max-width: 103px; max-height: 108px;">
+            <img src="{{ asset($award_1->primary_image) }}" class="mt-5 wow slideInRight" data-wow-duration="1s"
+                style="max-width: 103px; max-height: 108px;">
+            <img src="{{ asset($award_2->primary_image) }}" class="mt-5 wow slideInRight" data-wow-duration="2s"
+                style="max-width: 103px; max-height: 108px;">
+            <img src="{{ asset($award_3->primary_image) }}" class="mt-5 wow slideInRight" data-wow-duration="3s"
+                style="max-width: 103px; max-height: 108px;">
+            <img src="{{ asset($award_4->primary_image) }}" class="mt-5 wow slideInRight" data-wow-duration="2s"
+                style="max-width: 103px; max-height: 108px;">
 
         </div>
         <div class="container">
             <div class="row" style="align-items: end;">
                 <div class="col-md-5">
                     <div class="why-text new-why-text wow slideInLeft" data-wow-duration="2s">
-                        <h2>{{$award_section->title}}</h2>
+                        <h2>{{ $award_section->title }}</h2>
                         <p>{!! $award_section->description !!}</P>
                         <a href="{{ $award_section->link }}">
                             <p>{{ $award_section->button_text }}</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
@@ -303,28 +313,27 @@
                 <div class="row" style="justify-content: center;">
                     <div class="col-md-10">
                         <div class="reviews-slider">
-                            @foreach ($reviews as $review )
+                            @foreach ($reviews as $review)
+                                <div>
+                                    <div class="reviews-slider-items">
+                                        <div class="reviews-slider-box">
+                                            <h6>"</h6>
+                                            <h2>{{ $review->name }}</h2>
+                                            <p>“{{ $review->review }}”
 
-                            <div>
-                                <div class="reviews-slider-items">
-                                    <div class="reviews-slider-box">
-                                        <h6>"</h6>
-                                        <h2>{{ $review->name }}</h2>
-                                        <p>“{{$review->review}}”
-
-                                        </p>
-                                        <ul>
-                                            <li>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </li>
-                                        </ul>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                             {{-- <div>
                                 <div class="reviews-slider-items">

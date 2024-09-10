@@ -53,9 +53,9 @@
                                                 </div>
                                                 @csrf
                                                 <div class="form-material form-material-primary floating m-20">
-                                                    <input type="text" class="form-control" name="address"
+                                                    {{-- <input type="text" class="form-control" name="address"
                                                         value="{{ getConfig('address') }}" required>
-                                                    <label for="material-color-primary2">Address</label>
+                                                    <label for="material-color-primary2">Address</label> --}}
                                                 </div>
 
                                                 <div class="form-material form-material-primary floating m-20">
@@ -123,9 +123,9 @@
                                                 <!-- <h4>Socials</h4> -->
 
                                                 <div class="form-material form-material-primary floating m-20">
-                                                    <input type="text" class="form-control" name="facebook"
-                                                        value="{{ getConfig('facebook') }}" required>
-                                                    <label for="material-color-primary2">Facebook</label>
+                                                    <input type="text" class="form-control" name="youtube"
+                                                        value="{{ getConfig('youtube') }}" required>
+                                                    <label for="material-color-primary2">Youtube</label>
                                                 </div>
 
 
@@ -142,14 +142,14 @@
                                                     <label for="material-color-primary2">Instagram </label>
                                                 </div> --}}
                                                 <div class="form-material form-material-primary floating m-20">
-                                                    <input type="text" class="form-control" name="link"
-                                                        value="{{ getConfig('link') }}" required>
-                                                    <label for="material-color-primary2">LinkedIn </label>
+                                                    <input type="text" class="form-control" name="twitter"
+                                                        value="{{ getConfig('twitter') }}" required>
+                                                    <label for="material-color-primary2">Twitter </label>
                                                 </div>
                                                 <div class="form-material form-material-primary floating m-20">
-                                                    <input type="text" class="form-control" name="insta"
-                                                        value="{{ getConfig('insta') }}" required>
-                                                    <label for="material-color-primary2">Instagram </label>
+                                                    {{-- <input type="text" class="form-control" name="facebook"
+                                                        value="{{ getConfig('facebook') }}" required>
+                                                    <label for="material-color-primary2">facebook </label> --}}
                                                 </div>
 
                                                 <input type="submit" value="Update Configuration"

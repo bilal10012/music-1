@@ -13,10 +13,10 @@
                             <th>First Name :</th>
                             <td>{{$inquiry->first_name}} </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>Last Name :</th>
                             <td>{{$inquiry->last_name}}</td>
-                        </tr>
+                        </tr> --}}
                         @if($inquiry->subject !=null)
                         <tr>
                             <th>Subject :</th>
@@ -35,9 +35,9 @@
                             <th>Message :</th>
                             <td>{{$inquiry->message}}</td>
                         </tr>
-              
-                       
-                  
+
+
+
                     </tbody>
                 </table>
             </div>

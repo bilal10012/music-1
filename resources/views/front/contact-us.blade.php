@@ -44,9 +44,15 @@
                             </div>
                         </div>
                         <div class="socil-icon">
-                            <i class="fa-brands fa-youtube"></i>
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <i class="fa-brands fa-facebook-f"></i>
+                            <a href="{{ getConfig('youtube') }}" target="_blank">
+                                <i class="fa-brands fa-youtube wow slideInRight" data-wow-duration="1s" style="color: white;"></i>
+                            </a>
+                            <a href="{{ getConfig('twitter') }}" target="_blank">
+                                <i class="fa-brands fa-x-twitter wow slideInRight" data-wow-duration="2s" style="color: white;"></i>
+                            </a>
+                            <a href="{{ getConfig('facebook') }}" target="_blank">
+                                <i class="fa-brands fa-facebook-f wow slideInRight" data-wow-duration="3s" style="color: white;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -113,7 +119,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="contact-btn">
                                         <button type="submit">
-                                            <p>READ MORE</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
+                                            <p>SUBMIT</p> <i class="fa-sharp fa-solid fa-paper-plane-top"></i>
                                         </button>
                                     </div>
                                 </div>

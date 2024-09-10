@@ -52,17 +52,16 @@
                                 @endif
 
                                 @if ($content->subtitle != null && $content->page == 'About Us' && $content->section == 'About us section')
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-material form-material-primary floating m-20">
-                                            <input type="text" class="form-control"
-                                                   name="content[{{ $content->id }}][subtitle]"
-                                                   value="{{ $content->subtitle }}">
-                                            <label>Last paragraph</label>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="form-material form-material-primary floating m-20">
+                                                <input type="text" class="form-control"
+                                                    name="content[{{ $content->id }}][subtitle]"
+                                                    value="{{ $content->subtitle }}">
+                                                <label>Last paragraph</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
                                 @elseif ($content->subtitle != null)
                                     <div class="form-group row">
                                         <div class="col-md-12">
@@ -91,12 +90,14 @@
                                     </div>
                                 @endif
 
-                                @if ($content->description != Null)
+                                @if ($content->description != null)
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="block-content block-content-full">
                                                 <label>Description</label>
-                                                <textarea name="content[{{ $content->id }}][description]" class="js-summernote">{!! $content->description !!}</textarea>
+                                                <textarea name="content[{{ $content->id }}][description]" class="js-summernote">
+                                                    {!! str_ireplace('from', 'frm', $content->description) !!}
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -129,17 +130,15 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if($content->page=='Events Page' & $content->link != null)
-
-
-                                <div class="col-md-5">
-                                    <div class="form-material form-material-primary floating mt-20">
-                                        <input type="text" class="form-control"
-                                            name="content[{{ $content->id }}][button_link]"
-                                            value="{{ $content->link }}">
-                                        <label>Image Link</label>
+                                @if (($content->page == 'Events Page') & ($content->link != null))
+                                    <div class="col-md-5">
+                                        <div class="form-material form-material-primary floating mt-20">
+                                            <input type="text" class="form-control"
+                                                name="content[{{ $content->id }}][button_link]"
+                                                value="{{ $content->link }}">
+                                            <label>Image Link</label>
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                             </div>
                             <div class="col-md-4">
@@ -147,8 +146,7 @@
                                     <div class="block">
                                         <div class="block-content block-content-full">
                                             <div class="dropzone" id="primaryImage{{ $content->id }}"
-                                                value="{{ $content->btn_color }}"
-                                                style="background-color: #6e80db;"></div>
+                                                value="{{ $content->btn_color }}" style="background-color: #6e80db;"></div>
                                             <small>Click on the image to upload a new Image.</small>
                                         </div>
                                     </div>

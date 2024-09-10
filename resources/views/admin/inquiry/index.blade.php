@@ -41,7 +41,7 @@
                             {{ csrf_field() }}
                         </form>
                         </tr>
-                   
+
                     @empty
                     <tr>
                         <td colspan="7" class="text-center"><p class="text-uppercase m-20 font-weight-bold">No Contact Inquiry Received.</p></td>
@@ -65,11 +65,11 @@ $(document).ready( function () {
     rowReorder: true,
     lengthMenu:[[10,25,50,-1],[10,25,50,"All"]]
   });
-  
 
-  
 
-  
+
+
+
 } );
 </script>
 @endsection

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-text">
-                        <h2 class="pl5">All About The Music Richmond</h2>
+                        <h2 class="pl5">{{ getConfig('website_name') }}</h2>
                         <p class="mt5"><p>{{ getConfig('news_text') }} </p>
                     </div>
                 </div>
